@@ -4,6 +4,7 @@ import { useState } from "react"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Label } from "@/components/ui/label"
+import { Button } from "@/components/ui/button"
 
 export default function Edit()
 {
@@ -36,6 +37,9 @@ export default function Edit()
 
     return(
         <div className="w-full bg-stone-100">
+            <div className="w-full h-12 bg-black shadow  mb-5 flex justify-end place-items-center">
+                <Button variant={"outline"} onClick={save}> save </Button>
+            </div>
             {
                 QnA?.map((question, index) => {
                     return (
@@ -64,31 +68,4 @@ export default function Edit()
         </div>
     )
 
-    return(
-        <div>
-            <div className="w-full bg-stone-500 h-auto m-auto ">
-                <button className="button" onClick={save}> save </button>
-            </div>
-            {
-                QnA?.map((question, index) => {
-                    return (
-                        <div key={index} className="w-full h-auto  m-auto sahdow-lg mb-10">
-                            <input 
-                             type="text" 
-                             value={question.item}
-                             className="w-full text-lg font-bold mb-2 input" 
-                             onChange={(e) => changeTitle(e, index)}
-                            /> 
-                            <br />
-                            <textarea 
-                             value={question.definition} 
-                             className="w-full"
-                             onChange={(e) => changeDefinition(e, index)}
-                             ></textarea>
-                        </div>
-                    )
-                 })
-            }
-        </div>
-    )
 }
