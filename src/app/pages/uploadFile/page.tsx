@@ -16,7 +16,7 @@ export default function Upload()
     const router = useRouter()
 
     const mutation = useMutation({
-        mutationFn : (formData : FormData) => axios.post("http://localhost:1000/upload", formData),
+        mutationFn : (formData : FormData) => axios.post("http://localhost:1000", formData),
         onSuccess : (response) => {
             const  QnA : reviewerInterface[]  = response.data
             setReviewer(QnA)
