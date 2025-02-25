@@ -11,6 +11,7 @@ export default function Edit()
     const reviewer = useReviewerStore((state) => state.reviewer)
     const [QnA, setQnA] = useState(reviewer)
 
+    const [fileName, setFileName] = useState("")
 
     const changeTitle = (e : React.ChangeEvent<HTMLInputElement>, index : number) => {
         let currentQnA = [...QnA]
@@ -25,12 +26,15 @@ export default function Edit()
     }
 
     const save = () => {
+
+        if(!fileName) return alert("add reviewer title");
+
         const text = JSON.stringify(QnA)
         const blob = new Blob([text], { type: "text/plain" });
         const link = document.createElement("a");
 
         link.href = URL.createObjectURL(blob);
-        link.download = "example.txt";
+        link.download = fileName;
         document.body.appendChild(link);
         link.click();
         document.body.removeChild(link);
@@ -42,8 +46,9 @@ export default function Edit()
                 <div className="m-auto w-5/6  h-full place-items-center flex gap-3">
                     <Input 
                         type="text" 
-                        value={"basket ball ppt"}
-                        onChange={(e) =>{}}
+                        value={fileName}
+                        placeholder="set reviewer title"
+                        onChange={(e) =>setFileName(e.target.value)}
                         className="font-bold bg-white"
                     /> 
                     <Button variant={"outline"} onClick={save} >  save </Button>
