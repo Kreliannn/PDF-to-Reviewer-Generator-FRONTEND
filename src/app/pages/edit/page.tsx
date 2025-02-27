@@ -6,6 +6,7 @@ import { Textarea } from "@/components/ui/textarea"
 import { Label } from "@/components/ui/label"
 import { Button } from "@/components/ui/button"
 import { Trash, X } from "lucide-react";
+import {confirmAlert} from "../../utils/sweerAlert"
 
 export default function Edit()
 {
@@ -69,7 +70,7 @@ export default function Edit()
 
                                 <div className="w-full flex justify-between items-center"> 
                                     <Label className="font-bold text-stone-600"> item #{index + 1}</Label>
-                                    <X className="w-5 h-5 text-red-500 hover:bg-red-500 hover:text-white rounded " onClick={()=>setQnA(QnA.filter((item) => item.id != question.id))}/>
+                                    <X className="w-5 h-5 text-black hover:text-red-500 hover:text-white rounded " onClick={()=>confirmAlert(() => setQnA(QnA.filter((item) => item.id != question.id)))} />
                                 </div>
                              
                                 <Input 
