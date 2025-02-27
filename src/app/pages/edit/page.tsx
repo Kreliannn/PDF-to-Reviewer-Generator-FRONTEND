@@ -93,7 +93,7 @@ export default function Edit()
                  })
             }
             
-            <button className="button w-5/6 m-auto block" onClick={() => setQnA([...QnA, { id : 1, item : "", definition : ""}])}> add items </button>
+            <button className="button w-5/6 m-auto block" onClick={() => setQnA([...QnA, { id : crypto.randomUUID(), item : "", definition : ""}])}> add items </button>
 
             <br />
         </div>
