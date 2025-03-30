@@ -2,7 +2,8 @@
 
 A web app that allows users to upload **PDF files** and automatically generates a **question-and-answer reviewer** in **JSON format**. Users can **edit, add, or remove** items from the generated output before saving.
 
-## 🚧 <span style="color:red">This project is not complete and under development</span>  
+## 🚧 <span style="color:red"> not complete </span>  
+this project is under developemnt
 
 ## ⚠️ <span style="color:red">Warning</span>  
 
