@@ -22,11 +22,11 @@ export default function UploadPage()
     const fileInput = useRef<HTMLInputElement>(null)
 
     const mutation = useMutation({
-        mutationFn : (formData : FormData) => axios.post("http://localhost:1000/test", formData),
+        mutationFn : (formData : FormData) => axios.post("http://localhost:1000", formData),
         onSuccess : (response) => {
             const  QnA : reviewerInterface[]  = response.data
             setReviewer(QnA)
-            router.push("/pages/edit")
+            router.push("/pages/generatorEdit")
         },
         onError : (err) => {
             alert("error")

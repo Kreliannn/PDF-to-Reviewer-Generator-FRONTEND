@@ -46,6 +46,8 @@ export default function Edit()
         document.body.appendChild(link);
         link.click();
         document.body.removeChild(link);
+
+        
     }
 
     return(
