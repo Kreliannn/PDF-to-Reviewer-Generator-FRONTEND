@@ -21,9 +21,6 @@ export default function QuizUploadPage()
     const [file, setFile] = useState<FileList | null>(null)
     const [fileContent, setFileContent] = useState<reviewerInterface[] | null>(null)
 
-
-    console.log(file)
-
     const setReviewer = useReviewerStore((state) => state.setReviewer)
 
     const router = useRouter()
@@ -45,15 +42,15 @@ export default function QuizUploadPage()
     }, [file]);
 
 
-    const upload = () => {
-       
-        
+    const start = () => {
+        if(fileContent && file)
+        {
+            setReviewer(fileContent)
+            router.push("/pages/quizReview")
+        }
     }
 
     
-    
-
-
     return(
         <div className="w-full">
 
@@ -113,7 +110,7 @@ export default function QuizUploadPage()
             <br />
 
             
-            <Button onClick={upload} className="block w-5/6 md:w-3/6 m-auto" disabled={!file}> Start Review </Button>
+            <Button onClick={start} className="block w-5/6 md:w-3/6 m-auto" disabled={!file}> Start Review </Button>
             
             <div className="w-5/6 md:w-3/6 m-auto">
               <p className="w-5/6  m-auto text-center text-md  text-stone-400 mt-4 text-xs"> Your PDF file will be analyzed to create a reviewer with key concepts and question that you can personalized </p>
