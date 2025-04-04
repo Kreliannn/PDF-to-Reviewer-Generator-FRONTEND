@@ -18,10 +18,21 @@ export default function TakeQuiz()
     const reviewer = useReviewerStore((state) => state.reviewer)
     
     const [quiz, setQuiz] = useState<reviewerInterface[]>()
+    const [question, setQuestion] = useState<string>("")
     const [input, setInput] = useState<string>("")
+    const [index, setIndex] = useState(0)
 
     useEffect(() => {
         setQuiz(reviewer)
+        console.log(reviewer)
+        if(reviewer.length != 0)
+        {
+            setQuestion(reviewer[index].definition)
+        }
+        else
+        {
+            console.log("no quiz")
+        }
     },[])
 
     const checkIfExists = ( item: string) => {
@@ -29,7 +40,13 @@ export default function TakeQuiz()
     }
     
     const submit = () => {
-
+        if(quiz == undefined) return
+        if(input == quiz[index].item)
+        {
+            setIndex(index + 1)
+            setInput("")
+            setQuestion(quiz[index].definition)
+        }
     }
 
     return(
@@ -47,8 +64,8 @@ export default function TakeQuiz()
                 </div>
 
                 <div className="w-full grid grid-cols-1 h-64 rounded    gap-1.5 p-2 ">
-                    <div className=" h-full bg-white rounded shadow-md p-2">
-
+                    <div className=" h-full bg-white rounded shadow-md p-4 oveflow-auto">
+                        <h1 className="text-stone-700 font-bold text-lg "> {question} </h1>
                     </div>  
                 </div>
 
@@ -60,7 +77,11 @@ export default function TakeQuiz()
                         value={input}
                         onChange={(e) => setInput(e.target.value)}
                     />
-                    <Button className="col-span-1 h-14 shadow-lg font-bold text-lg flex items-center gap-2" variant="black">
+                    <Button 
+                     className="col-span-1 h-14 shadow-lg font-bold text-lg flex items-center gap-2" 
+                     variant="black"
+                     onClick={submit}
+                    >
                         <Send className="" />  
                         <span className="hidden md:block">Submit</span>  
                               
