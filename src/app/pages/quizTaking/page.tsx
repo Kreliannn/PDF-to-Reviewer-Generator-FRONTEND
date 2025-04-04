@@ -10,7 +10,7 @@ import { reviewerInterface } from "@/app/interface/reviewer"
 import Navbar from "@/components/ui/quizNavbar"
 import { Send } from 'lucide-react';
 import AllChoices from "./components/allChoices"
-
+import { SkeletonCard } from "./components/questionSkeleton"
 
 
 export default function TakeQuiz()
@@ -21,6 +21,7 @@ export default function TakeQuiz()
     const [question, setQuestion] = useState<string>("")
     const [input, setInput] = useState<string>("")
     const [index, setIndex] = useState(0)
+    const [isLoading, setIsLoading] = useState(true)
 
     useEffect(() => {
         setQuiz(reviewer)
@@ -28,6 +29,7 @@ export default function TakeQuiz()
         if(reviewer.length != 0)
         {
             setQuestion(reviewer[index].definition)
+            setIsLoading(false)
         }
         else
         {
@@ -65,7 +67,9 @@ export default function TakeQuiz()
 
                 <div className="w-full grid grid-cols-1 h-64 rounded    gap-1.5 p-2 ">
                     <div className=" h-full bg-white rounded shadow-md p-4 oveflow-auto">
-                        <h1 className="text-stone-700 font-bold text-lg "> {question} </h1>
+                        {
+                            (isLoading) ? <SkeletonCard /> : <h1 className="text-stone-700 font-bold text-lg "> {question} </h1>
+                        }
                     </div>  
                 </div>
 

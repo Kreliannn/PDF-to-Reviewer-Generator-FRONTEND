@@ -7,7 +7,7 @@ import { reviewerInterface } from "@/app/interface/reviewer"
 import { useRouter } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import { Divide, Upload, X } from "lucide-react"
-
+import { ButtonLoading } from "./components/loading"
 
 const filePreview = async (file: File) => {
     const text = await file.text();
@@ -18,6 +18,7 @@ const filePreview = async (file: File) => {
 
 export default function QuizUploadPage()
 {
+    const [isLoading, setIsLoading] = useState(false)
     const [file, setFile] = useState<FileList | null>(null)
     const [fileContent, setFileContent] = useState<reviewerInterface[] | null>(null)
 
@@ -45,6 +46,7 @@ export default function QuizUploadPage()
     const start = () => {
         if(fileContent && file)
         {
+            setIsLoading(true)
             setReviewer(fileContent)
             router.push("/pages/quizReview")
         }
@@ -109,9 +111,8 @@ export default function QuizUploadPage()
 
             <br />
 
-            
-            <Button onClick={start} className="block w-5/6 md:w-3/6 m-auto" disabled={!file}> Start Review </Button>
-            
+            {(isLoading) ? <ButtonLoading />: <Button onClick={start} className="block w-5/6 md:w-3/6 m-auto" disabled={!file}> Start Review </Button> }
+
             <div className="w-5/6 md:w-3/6 m-auto">
               <p className="w-5/6  m-auto text-center text-md  text-stone-400 mt-4 text-xs"> Your PDF file will be analyzed to create a reviewer with key concepts and question that you can personalized </p>
             </div>
@@ -120,4 +121,5 @@ export default function QuizUploadPage()
         </div>
     )
 } 
+
 
