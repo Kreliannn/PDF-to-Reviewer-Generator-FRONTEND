@@ -49,6 +49,14 @@ export default function TakeQuiz()
         {
             const newQuiz = [...quiz]
             newQuiz.shift();
+            if(newQuiz.length == 0)
+            {
+                setIisStart(true)
+                setInput("")
+                setQuiz(reviewer)
+                setQuestion(reviewer[0].definition)
+                return
+            }
             setQuiz(newQuiz) 
             setQuestion(newQuiz[0].definition)
             setInput("")
@@ -56,7 +64,6 @@ export default function TakeQuiz()
         else
         {
             console.log("incorrect")
-      
         }
     }
 
