@@ -23,6 +23,8 @@ export default function TakeQuiz()
     const [index, setIndex] = useState(0)
     const [isLoading, setIsLoading] = useState(true)
 
+    console.log(quiz)
+
     useEffect(() => {
         setQuiz(reviewer)
         console.log(reviewer)
@@ -43,11 +45,19 @@ export default function TakeQuiz()
     
     const submit = () => {
         if(quiz == undefined) return
-        if(input == quiz[index].item)
+        if(input.toUpperCase() == quiz[index].item.toUpperCase())
         {
-            setIndex(index + 1)
+            //setIndex(index + 1)
+            const newQuiz = [...quiz]
+            newQuiz.shift();
+            setQuiz(newQuiz) 
+            setQuestion(newQuiz[0].definition)
             setInput("")
-            setQuestion(quiz[index].definition)
+        }
+        else
+        {
+            console.log("incorrect")
+      
         }
     }
 
@@ -61,7 +71,7 @@ export default function TakeQuiz()
                         <h1 className="text-left md:text-2xl text-lg font-bold text-stone-700"> Quiz Name </h1>
                     </div>
                     <div className="w-100">
-                        <h1 className="text-right md:text-2xl text-lg font-bold text-stone-700"> Item Left: 5 </h1>
+                        <h1 className="text-right md:text-2xl text-lg font-bold text-stone-700"> Item Left: {quiz?.length} </h1>
                     </div>
                 </div>
 
