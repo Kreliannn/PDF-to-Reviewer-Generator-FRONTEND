@@ -21,9 +21,9 @@ export default function TakeQuiz()
     const [question, setQuestion] = useState<string>("")
     const [input, setInput] = useState<string>("")
     const [isLoading, setIsLoading] = useState(true)
-    const [isFirstTry, SetIsFirstTry] = useState(true)
+    const [isStart, setIisStart] = useState(true)
 
-    if(isFirstTry) return <StartPage />
+  
 
     useEffect(() => {
         setQuiz(reviewer)
@@ -59,6 +59,8 @@ export default function TakeQuiz()
       
         }
     }
+
+    if(isStart) return <StartPage setIsStart={setIisStart} />
 
     return(
         <div className="w-full h-dvh bg-stone-100 ">

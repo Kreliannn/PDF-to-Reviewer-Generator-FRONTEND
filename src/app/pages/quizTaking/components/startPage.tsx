@@ -11,7 +11,7 @@ import Navbar from "@/components/ui/quizNavbar"
 import { Send } from 'lucide-react';
 import PieChart from "./chart"
 
-export default function StartPage()
+export default function StartPage({ setIsStart }: { setIsStart: (isStart: boolean) => void })
 {
    
 
@@ -24,7 +24,10 @@ export default function StartPage()
                      <PieChart />
                 </div>
                 <div className="w-5/6 m-auto">
-                    <Button className="w-full">
+                    <Button 
+                        className="w-full"
+                        onClick={() => setIsStart(false)}
+                    >
                         Start
                     </Button>
                 </div>
