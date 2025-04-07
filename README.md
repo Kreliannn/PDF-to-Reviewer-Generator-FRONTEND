@@ -27,14 +27,6 @@ If you want access to the **full source code**, please message me on TikTok.
 - 💾 **Save & Export** – Store the final reviewer in JSON format.
 
 
-## 📌 Usage
-
-1. Upload a PDF file.
-2. Wait for the system to generate the Q&A reviewer.
-3. Modify the generated questions and answers as needed.
-4. Save and export the final reviewer.
-
-
 
 ## 📸 Preview  
 ![Image](https://github.com/user-attachments/assets/c7358c44-e113-487c-8eae-c5ba87144877)
