@@ -26,13 +26,8 @@ export default function ReviewQuiz()
             {
                 reviewer?.map((item, index) => {
                     return (
-                        <div key={index} className="w-5/6 h-auto  m-auto sahdow-lg mb-10">
+                        <div key={index} className="w-5/6 h-auto  m-auto sahdow-lg mb-3">
                             <div className="grid w-full items-center gap-1.5 ">
-
-                                <div className="w-full flex justify-between items-center"> 
-                                    <Label className="font-bold text-stone-600"> item #{index + 1}</Label>
-                                </div>
-
                                 <div className="h-auto bg-white h-60 md:h-32 rounded shadow-md p-2">
                                         <div  className="w-full flex flex-col gap-1 p-2">
                                             <h1 className="font-bold">{item.item}</h1>

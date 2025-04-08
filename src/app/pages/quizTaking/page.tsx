@@ -34,8 +34,6 @@ export default function TakeQuiz()
         pass: 0
     })
 
-    console.log(title)
-   
     
 
     useEffect(() => {
@@ -117,9 +115,9 @@ export default function TakeQuiz()
 
     if(isStart) 
     {
-        if(analytics.correct == 0 && analytics.wrong == 0 && analytics.pass == 0)
+        if(analytics.correct == 0 && analytics.wrong == 0 && analytics.pass == 0 && quiz)
         {
-           return <StartPage setIsStart={setIisStart} />
+           return <StartPage title={title} setIsStart={setIisStart} items={quiz?.length} />
         }
         else
         {
@@ -130,11 +128,11 @@ export default function TakeQuiz()
     return(
         <div className="w-full h-dvh bg-stone-100 ">
             <Navbar />         
-            <div className="w-5/6  h-auto m-auto s ">
+            <div className="w-5/6  h-auto m-auto s mt-5 ">
 
-                <div className="grid grid-cols-2 h-10   gap-1.5 p-2 ">
+                <div className="grid grid-cols-2 h-10   gap-1.5 p-2 mb-1 ">
                     <div className="">
-                        <h1 className="text-left md:text-2xl text-lg font-bold text-stone-700"> Quiz Name </h1>
+                        <h1 className="text-left md:text-2xl text-lg font-bold text-stone-700"> {title.split(".")[0]} </h1>
                     </div>
                     <div className="w-100">
                         <h1 className="text-right md:text-2xl text-lg font-bold text-stone-700"> Item Left: {quizItem?.length} </h1>
