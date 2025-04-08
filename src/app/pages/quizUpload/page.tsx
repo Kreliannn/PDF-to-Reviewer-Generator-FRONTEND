@@ -58,6 +58,7 @@ export default function QuizUploadPage()
 
             <h1 className="text-center w-5/6 md:w-3/6 m-auto text-3xl font-bold mt-5"> Reviwer</h1>
             <p className="text-center w-5/6 md:w-3/6 m-auto text-md  text-stone-400 mt-2"> upload your reviewer file here </p>
+            
             <input 
               ref={fileInput}
               id="txt" 
@@ -67,11 +68,14 @@ export default function QuizUploadPage()
               required 
               multiple={true}
               onChange={(e) => setFile(e.target.files || null)}
+
              />
 
              <br />
 
-            <Button onClick={() => fileInput.current?.click()} variant="outline" className="border-2 border-dashed  w-5/6 md:w-3/6 m-auto h-32 flex flex-col gap-2">
+             
+
+            <Button onClick={() => fileInput.current?.click()} variant="outline" className={(file) ? "hidden" : "border-2 border-dashed  w-5/6 md:w-3/6 m-auto h-32 flex flex-col gap-2"}>
                 <Upload className="h-24 w-24" />
                 <span className="text-lg font-bold">Click to upload file</span>
                 <span className="text-xs text-stone-500">pdf file only</span>

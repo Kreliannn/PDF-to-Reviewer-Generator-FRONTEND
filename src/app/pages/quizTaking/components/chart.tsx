@@ -19,9 +19,9 @@ import {
 } from "@/components/ui/chart"
 
 const chartData = [
-  { answer: "correct", type: 49, fill: "#22c55e" }, // green
-  { answer: "wrong", type: 21, fill: "#ef4444" },   // red
-  { answer: "pass", type: 1, fill: "blue" },        // blue
+  { answer: "correct", type: 49, fill: "#F1E7E7" }, // green
+  { answer: "wrong", type: 21, fill: "#BDB395"  },   // red
+  { answer: "pass", type: 10, fill: "#D4C9BE" },        // blue
 ]
 
 const chartConfig = {
@@ -38,13 +38,15 @@ const chartConfig = {
   },
   pass: {
     label: "Pass",
-    color: "blue",
+    color: "hsl(var(--chart-5))",
   },
 } satisfies ChartConfig
 
+
+
 export default function Component() {
   return (
-    <Card className="flex flex-col bg-stone-800 text-white shadow-sm">
+    <Card className="flex flex-col shadow-lg">
       <CardHeader className="items-center pb-0">
         <CardTitle>Pie Chart - Answer Summary</CardTitle>
         <CardDescription>Quiz Results (Jan - June 2024)</CardDescription>
@@ -52,9 +54,9 @@ export default function Component() {
       <CardContent className="flex-1 pb-0">
         <ChartContainer
           config={chartConfig}
-          className="mx-auto aspect-square max-h-[300px] [&_.recharts-text]:fill-background"
+          className="mx-auto aspect-square max-h-[300px] [&_.recharts-text]:fill-black"
         >
-          <PieChart>
+          <PieChart className="">
             <ChartTooltip
               content={<ChartTooltipContent nameKey="answer" hideLabel />}
             />
@@ -63,23 +65,20 @@ export default function Component() {
               dataKey="type"
               outerRadius={80}
               label={({ name, value, index }) => chartData[index].answer}
-
-
               labelLine={true}
-             
+              className="font-bold text-stone-600"
             >
-                <LabelList
-                    dataKey="type"
-                    className="fill-background font-bold"
-                    stroke="none"
-                    fontSize={14}
-                    formatter={(value: number) => {
-                        const total = chartData.reduce((acc, cur) => acc + cur.type, 0)
-                        const percent = ((value / total) * 100).toFixed(1)
-                        return `${percent}%`
+              <LabelList
+                dataKey="type"
+                className="fill-black font-bold"
+                stroke="none"
+                fontSize={14}
+                formatter={(value: number) => {
+                  const total = chartData.reduce((acc, cur) => acc + cur.type, 0)
+                  const percent = ((value / total) * 100).toFixed(1)
+                  return `${percent}%`
                 }}
-                />
-
+              />
             </Pie>
           </PieChart>
         </ChartContainer>
