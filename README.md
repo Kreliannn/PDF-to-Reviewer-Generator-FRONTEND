@@ -1,6 +1,6 @@
 # 📚 PDF to Reviewer And Quiz Web App
 
-A web application that use Ai to turn pdf files into Structured Q&A type Reviewer. user can customize the generated output before saving, and take personalized quizzes based on the saved Reviewer. The quiz allows filtering, skipping questions, and allow uset to choose between input and multiple-choice modes. After completing a quiz, users get a visual breakdown of their performance including correct, wrong, and skipped answers.
+A Responsive web app that use Ai to turn pdf files into Structured Q&A type Reviewer. user can customize the generated output before saving, and take personalized quizzes based on the saved Reviewer. The quiz allows filtering, skipping questions, and allow uset to choose between input and multiple-choice modes. After completing a quiz, users get a visual breakdown of their performance including correct, wrong, and skipped answers.
 
 
 ## ⚠️ <span style="color:red">Warning</span>  
