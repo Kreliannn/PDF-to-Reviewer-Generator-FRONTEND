@@ -1,6 +1,6 @@
 "use client"
 import useReviewerStore from "@/app/store/reviewerStore"
-import { useState, useEffect } from "react"
+import { useState, useEffect, use } from "react"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Label } from "@/components/ui/label"
@@ -17,49 +17,54 @@ import FilterQuestion from "./components/filterQuestion"
 export default function TakeQuiz()
 {
     const reviewer = useReviewerStore((state) => state.reviewer)
-    
+    const [quizItem, setQuizItem] = useState<reviewerInterface[]>([])
     const [quiz, setQuiz] = useState<reviewerInterface[]>()
     const [question, setQuestion] = useState<string>("")
     const [input, setInput] = useState<string>("")
     const [isLoading, setIsLoading] = useState(true)
     const [isStart, setIisStart] = useState(true)
 
-  
+    console.log(quiz?.length)
+    console.log(quizItem?.length)
+
+   
 
     useEffect(() => {
         setQuiz(reviewer)
-        console.log(reviewer)
         if(reviewer.length != 0)
         {
             setQuestion(reviewer[0].definition)
             setIsLoading(false)
         }
-        else
-        {
-            console.log("no quiz")
-        }
     },[reviewer])
 
+    useEffect(() => {
+        if(quiz && quiz.length != 0)
+        {
+            setQuizItem(quiz)
+            setQuestion(quiz[0].definition)
+        }
+
+    }, [quiz])
+
     const checkIfExists = ( item: string) => {
-        if(quiz) return quiz.some((obj) => obj.item.toUpperCase() === item.toUpperCase()); 
+        if(quizItem) return quizItem.some((obj) => obj.item.toUpperCase() === item.toUpperCase()); 
     }
     
     const submit = () => {
-        if(quiz == undefined) return
-        if(input.toUpperCase() == quiz[0].item.toUpperCase())
+        if(!quizItem) return
+        if(input.toUpperCase() == quizItem[0].item.toUpperCase())
         {
-            const newQuiz = [...quiz]
+            const newQuiz = [...quizItem]
             newQuiz.shift();
             if(newQuiz.length == 0)
             {
-                setIisStart(true)
-                setInput("")
-                setQuiz(reviewer)
-                setQuestion(reviewer[0].definition)
+                restartQuiz()
                 return
             }
-            setQuiz(newQuiz) 
-            setQuestion(newQuiz[0].definition)
+            nextQuestion()
+            setQuizItem(newQuiz) 
+            setQuestion(newQuiz[0].definition)      
             setInput("")
         }
         else
@@ -70,11 +75,31 @@ export default function TakeQuiz()
 
     const pass = () => {
         if(!quiz) return
-        const newQuiz = [...quiz]
+        const newQuiz = [...quizItem]
         const passItem = newQuiz.shift();
         newQuiz.push(passItem as reviewerInterface)
-        setQuiz(newQuiz)
+        setQuizItem(newQuiz)
         setQuestion(newQuiz[0].definition)
+        nextQuestion()
+    }
+
+    const endQuiz = () => {
+        restartQuiz()
+    }
+
+    const restartQuiz = () => {
+        if(!quiz) return
+        setIisStart(true)
+        setInput("")
+        setQuizItem(quiz)
+        setQuestion(quiz[0].definition)
+    }
+
+    const nextQuestion = () => {
+        setIsLoading(true)
+        setTimeout(() => {
+            setIsLoading(false)
+        }, 800)
     }
 
     if(isStart) return <StartPage setIsStart={setIisStart} />
@@ -89,7 +114,7 @@ export default function TakeQuiz()
                         <h1 className="text-left md:text-2xl text-lg font-bold text-stone-700"> Quiz Name </h1>
                     </div>
                     <div className="w-100">
-                        <h1 className="text-right md:text-2xl text-lg font-bold text-stone-700"> Item Left: {quiz?.length} </h1>
+                        <h1 className="text-right md:text-2xl text-lg font-bold text-stone-700"> Item Left: {quizItem?.length} </h1>
                     </div>
                 </div>
 
@@ -125,8 +150,8 @@ export default function TakeQuiz()
                     <div className="flex flex-wrap gap-2 p-2 mt-2">
                         <Button size="lg" variant="black" className="" onClick={pass}>  Pass </Button>
                         <AllChoices  quiz={quiz} setInput={setInput} input={input} submit={submit} />
-                        <FilterQuestion quiz={reviewer} setQuiz={setQuiz} setIisStart={setIisStart}/>
-                        <Button  size="lg" variant="black" className="" onClick={() => setIisStart(true)}>  End Quiz </Button>
+                        <FilterQuestion quiz={reviewer} quizItem={quizItem} setQuiz={setQuiz} setIisStart={setIisStart}/>
+                        <Button  size="lg" variant="black" className="" onClick={endQuiz}>  End Quiz </Button>
                     </div> : null
                 }
 

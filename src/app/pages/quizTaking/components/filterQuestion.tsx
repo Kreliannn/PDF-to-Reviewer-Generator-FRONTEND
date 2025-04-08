@@ -20,9 +20,10 @@ import {
 
 
 export default function FilterQuestion(
-    { quiz, setQuiz, setIisStart } 
+    { quiz, setQuiz, setIisStart , quizItem} 
     : { 
         quiz : reviewerInterface[], 
+        quizItem : reviewerInterface[],
         setQuiz : React.Dispatch<React.SetStateAction<reviewerInterface[] | undefined>>, 
         setIisStart : React.Dispatch<React.SetStateAction<boolean>> 
     }
