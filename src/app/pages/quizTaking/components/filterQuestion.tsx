@@ -1,16 +1,11 @@
-
+"use client"
 import { useState, useEffect } from "react"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Label } from "@/components/ui/label"
 import { Button } from "@/components/ui/button"
-import { Trash, X } from "lucide-react";
 import { reviewerInterface } from "@/app/interface/reviewer"
-import Navbar from "@/components/ui/quizNavbar"
-import { Send } from 'lucide-react';
-import { Badge } from "@/components/ui/badge"
-
-
+import { Checkbox } from "@/components/ui/checkbox"
 import {
   Drawer,
   DrawerClose,
@@ -24,8 +19,39 @@ import {
 
 
 
-export default function FilterQuestion({ quiz  } : { quiz : reviewerInterface[], }) 
+export default function FilterQuestion(
+    { quiz, setQuiz, setIisStart } 
+    : { 
+        quiz : reviewerInterface[], 
+        setQuiz : React.Dispatch<React.SetStateAction<reviewerInterface[] | undefined>>, 
+        setIisStart : React.Dispatch<React.SetStateAction<boolean>> 
+    }
+) 
 {
+    const [newQuiz, setNewQuiz] = useState<reviewerInterface[]>([])
+
+   
+
+    const filterNewQuiz = (isChecked: boolean, item : reviewerInterface  ) => {
+        if(!newQuiz) return
+        if(isChecked)
+        {
+            const newQ = [...newQuiz, item]
+            setNewQuiz(newQ)
+        }
+        else
+        {
+            const newQ = newQuiz.filter((i) => i.id != item.id)
+            setNewQuiz(newQ)
+        }
+      
+    }
+
+    const applyChanges = () => {
+        setQuiz(newQuiz)
+        setIisStart(true)
+    }
+
 
     return(
     <Drawer>
@@ -39,20 +65,28 @@ export default function FilterQuestion({ quiz  } : { quiz : reviewerInterface[],
             <DrawerDescription>check question of your choice </DrawerDescription>
           </DrawerHeader>
 
-          <div className="h-auto  max-h-72 md:max-h-62 p-4 pb-0 flex flex-wrap items-start gap-2 overflow-auto">
+          <div className="h-auto  max-h-72 md:max-h-62 p-4 pb-0   items-start  overflow-auto">
             {
                 quiz?.map((item, index) => {
                     return (
-                        <div>
-                            
+                        <div key={index} className="flex items-center space-x-2 mb-1">
+                            <Checkbox id="terms"  onCheckedChange={(checked : boolean) => {
+                               filterNewQuiz(checked, item)
+                            }}/>
+                            <label
+                            htmlFor="terms"
+                            className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                            >
+                                {item.item}
+                            </label>
                         </div>
                     )
                 })
             }
           </div>
 
-          <div className="w-full m-auto  flex justify-center">
-             <Button variant="black" className="w-full m-auto"> Apply Changes </Button>
+          <div className="w-full m-auto  flex justify-center p-4 mt-2">
+             <Button variant="black" className="w-full m-auto" onClick={applyChanges}> Apply Changes </Button>
           </div>
        
           

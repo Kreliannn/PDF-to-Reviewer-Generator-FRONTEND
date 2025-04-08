@@ -111,11 +111,14 @@ export default function TakeQuiz()
                     </Button>
                 </div>
 
-                <AllChoices quiz={reviewer} setInput={setInput} input={input} />
+                {
+                    (quiz) ?
+                    <div className="flex gap-4 p-2 mt-2">
+                        <AllChoices quiz={quiz} setInput={setInput} input={input} />
               
-                <FilterQuestion quiz={reviewer}  />
-              
-                
+                        <FilterQuestion quiz={quiz} setQuiz={setQuiz} setIisStart={setIisStart}/>
+                    </div> : null
+                }
 
             </div>
         </div>
