@@ -24,13 +24,26 @@ import {
 
 
 
-export default function AllChoices({ quiz, setInput, input } : { quiz : reviewerInterface[], setInput : React.Dispatch<React.SetStateAction<string>>, input : String } )
+export default function AllChoices({ quiz, setInput, input, submit } : 
+  { 
+    quiz : reviewerInterface[],
+     setInput : React.Dispatch<React.SetStateAction<string>>, 
+     input : String,
+     submit : () => void
+  } 
+)
 {
+
+  const [answer, setAnswer] = useState<string>("")  
+
+  const submitAnswer =() => {
+
+  }
 
     return(
     <Drawer>
       <DrawerTrigger asChild>
-        <Button variant="black"> Choices </Button>
+        <Button variant="black" size="lg"> Choices </Button>
       </DrawerTrigger>
       <DrawerContent>
       <div className="mx-auto w-full max-w-sm">
@@ -52,13 +65,13 @@ export default function AllChoices({ quiz, setInput, input } : { quiz : reviewer
                     )
                 })
             }  
+
           </div>
 
-          <DrawerFooter className="w-full">
-            <DrawerClose asChild className="w-full">
-              <Button variant="black" className="w-full">Cancel</Button>
-            </DrawerClose>
-          </DrawerFooter>
+          <div className="w-full m-auto  flex justify-center p-4 mt-2">
+             <Button variant="black" className="w-full m-auto" onClick={submit}> <Send /> Submit Answer </Button>
+          </div>
+
         </div>     
       </DrawerContent>
     </Drawer>

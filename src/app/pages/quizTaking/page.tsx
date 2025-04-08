@@ -113,10 +113,11 @@ export default function TakeQuiz()
 
                 {
                     (quiz) ?
-                    <div className="flex gap-4 p-2 mt-2">
-                        <AllChoices quiz={quiz} setInput={setInput} input={input} />
-              
-                        <FilterQuestion quiz={quiz} setQuiz={setQuiz} setIisStart={setIisStart}/>
+                    <div className="flex flex-wrap gap-2 p-2 mt-2">
+                        <Button size="lg" variant="black" className="" onClick={() => setIisStart(true)}>  Pass </Button>
+                        <AllChoices  quiz={quiz} setInput={setInput} input={input} submit={submit} />
+                        <FilterQuestion quiz={reviewer} setQuiz={setQuiz} setIisStart={setIisStart}/>
+                        <Button  size="lg" variant="black" className="" onClick={() => setIisStart(true)}>  End Quiz </Button>
                     </div> : null
                 }
 

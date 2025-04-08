@@ -19,9 +19,9 @@ import {
 } from "@/components/ui/chart"
 
 const chartData = [
-  { answer: "correct", type: 49, fill: "#F1E7E7" }, // green
-  { answer: "wrong", type: 21, fill: "#BDB395"  },   // red
-  { answer: "pass", type: 10, fill: "#D4C9BE" },        // blue
+  { answer: "correct", type: 49, fill: "#F1E7E7" }, // lighter color
+  { answer: "wrong", type: 21, fill: "#BDB395" },   // tan color
+  { answer: "pass", type: 10, fill: "#D4C9BE" },    // beige color
 ]
 
 const chartConfig = {
@@ -42,8 +42,6 @@ const chartConfig = {
   },
 } satisfies ChartConfig
 
-
-
 export default function Component() {
   return (
     <Card className="flex flex-col shadow-lg">
@@ -56,7 +54,7 @@ export default function Component() {
           config={chartConfig}
           className="mx-auto aspect-square max-h-[300px] [&_.recharts-text]:fill-black"
         >
-          <PieChart className="">
+          <PieChart>
             <ChartTooltip
               content={<ChartTooltipContent nameKey="answer" hideLabel />}
             />
@@ -70,9 +68,10 @@ export default function Component() {
             >
               <LabelList
                 dataKey="type"
-                className="fill-black font-bold"
+                className="fill-white font-bold"
                 stroke="none"
                 fontSize={14}
+                fill="white"
                 formatter={(value: number) => {
                   const total = chartData.reduce((acc, cur) => acc + cur.type, 0)
                   const percent = ((value / total) * 100).toFixed(1)

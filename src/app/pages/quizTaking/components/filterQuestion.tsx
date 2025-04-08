@@ -56,7 +56,7 @@ export default function FilterQuestion(
     return(
     <Drawer>
       <DrawerTrigger asChild>
-        <Button variant="black"> Filter Question </Button>
+        <Button  size="lg" variant="black"> Filter Question </Button>
       </DrawerTrigger>
       <DrawerContent>
       <div className="mx-auto w-full max-w-sm">
@@ -89,13 +89,6 @@ export default function FilterQuestion(
              <Button variant="black" className="w-full m-auto" onClick={applyChanges}> Apply Changes </Button>
           </div>
        
-          
-          
-          <DrawerFooter className="w-full">
-            <DrawerClose asChild className="w-full">
-              <Button variant="black" className="w-full">Cancel</Button>
-            </DrawerClose>
-          </DrawerFooter>
         </div>     
       </DrawerContent>
     </Drawer>
