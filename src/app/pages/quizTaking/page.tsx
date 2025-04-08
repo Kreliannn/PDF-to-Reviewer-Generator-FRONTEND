@@ -13,6 +13,8 @@ import AllChoices from "./components/allChoices"
 import { SkeletonCard } from "./components/questionSkeleton"
 import StartPage from "./components/startPage"
 import FilterQuestion from "./components/filterQuestion"
+import { analyticsInterface } from "@/app/interface/analytics"
+import StartPageWithChart from "./components/startPageWithChart"
 
 export default function TakeQuiz()
 {
@@ -23,10 +25,11 @@ export default function TakeQuiz()
     const [input, setInput] = useState<string>("")
     const [isLoading, setIsLoading] = useState(true)
     const [isStart, setIisStart] = useState(true)
-
-    console.log(quiz?.length)
-    console.log(quizItem?.length)
-
+    const [analytics, setAnalytics] = useState<analyticsInterface>({
+        correct: 0,
+        wrong: 0,
+        pass: 0
+    })
    
 
     useEffect(() => {
@@ -66,9 +69,11 @@ export default function TakeQuiz()
             setQuizItem(newQuiz) 
             setQuestion(newQuiz[0].definition)      
             setInput("")
+            setAnalytics(prev => ({...prev, correct: prev.correct + 1}))
         }
         else
         {
+            setAnalytics({...analytics, wrong: analytics.wrong + 1})
             console.log("incorrect")
         }
     }
@@ -81,6 +86,7 @@ export default function TakeQuiz()
         setQuizItem(newQuiz)
         setQuestion(newQuiz[0].definition)
         nextQuestion()
+        setAnalytics({...analytics, pass: analytics.pass + 1})
     }
 
     const endQuiz = () => {
@@ -93,6 +99,7 @@ export default function TakeQuiz()
         setInput("")
         setQuizItem(quiz)
         setQuestion(quiz[0].definition)
+
     }
 
     const nextQuestion = () => {
@@ -102,7 +109,17 @@ export default function TakeQuiz()
         }, 800)
     }
 
-    if(isStart) return <StartPage setIsStart={setIisStart} />
+    if(isStart) 
+    {
+        if(analytics.correct == 0 && analytics.wrong == 0 && analytics.pass == 0)
+        {
+           return <StartPage setAnalyttics={setAnalytics} analytics={analytics} setIsStart={setIisStart} />
+        }
+        else
+        {
+            return <StartPageWithChart setAnalyttics={setAnalytics} analytics={analytics} setIsStart={setIisStart} />
+        }
+    } 
 
     return(
         <div className="w-full h-dvh bg-stone-100 ">

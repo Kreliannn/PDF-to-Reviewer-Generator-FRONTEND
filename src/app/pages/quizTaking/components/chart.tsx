@@ -17,12 +17,9 @@ import {
   ChartTooltip,
   ChartTooltipContent,
 } from "@/components/ui/chart"
+import { analyticsInterface } from "@/app/interface/analytics"
 
-const chartData = [
-  { answer: "correct", type: 49, fill: "#F1E7E7" }, // lighter color
-  { answer: "wrong", type: 21, fill: "#BDB395" },   // tan color
-  { answer: "pass", type: 10, fill: "#D4C9BE" },    // beige color
-]
+
 
 const chartConfig = {
   type: {
@@ -42,12 +39,19 @@ const chartConfig = {
   },
 } satisfies ChartConfig
 
-export default function Component() {
+export default function Component({analytics} : {analytics : analyticsInterface}) {
+
+  const chartData = [
+    { answer: "correct", type: analytics.correct + 1, fill: "#F1E7E7" }, // lighter color
+    { answer: "wrong", type: analytics.wrong, fill: "#BDB395" },   // tan color
+    { answer: "pass", type: analytics.pass, fill: "#D4C9BE" },    // beige color
+  ]
+
   return (
     <Card className="flex flex-col shadow-lg">
       <CardHeader className="items-center pb-0">
-        <CardTitle>Pie Chart - Answer Summary</CardTitle>
-        <CardDescription>Quiz Results (Jan - June 2024)</CardDescription>
+        <CardTitle className="text-lg font-bold"> Quiz Performance Overview </CardTitle>
+        <CardDescription> Here's how you performed on your recent quiz attempt. </CardDescription>
       </CardHeader>
       <CardContent className="flex-1 pb-0">
         <ChartContainer
@@ -84,10 +88,10 @@ export default function Component() {
       </CardContent>
       <CardFooter className="flex-col gap-2 text-sm">
         <div className="flex items-center gap-2 font-medium leading-none">
-          Trending up by 5.2% this month <TrendingUp className="h-4 w-4" />
+          {(analytics.wrong == 0 &&  analytics.pass == 0) ? "You Got Perfect Score!!" : "Try Again To Get Better Result"}
         </div>
         <div className="leading-none text-muted-foreground">
-          Showing total quiz responses for the last 6 months
+          Taken On ({new Date().toLocaleDateString()}) 
         </div>
       </CardFooter>
     </Card>

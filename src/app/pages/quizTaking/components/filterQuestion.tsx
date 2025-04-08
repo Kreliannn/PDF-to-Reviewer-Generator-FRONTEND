@@ -53,6 +53,7 @@ export default function FilterQuestion(
         setIisStart(true)
     }
 
+    
 
     return(
     <Drawer>
@@ -71,7 +72,7 @@ export default function FilterQuestion(
                 quiz?.map((item, index) => {
                     return (
                         <div key={index} className="flex items-center space-x-2 mb-1">
-                            <Checkbox id="terms"  onCheckedChange={(checked : boolean) => {
+                            <Checkbox id="terms"   onCheckedChange={(checked : boolean) => {
                                filterNewQuiz(checked, item)
                             }}/>
                             <label
