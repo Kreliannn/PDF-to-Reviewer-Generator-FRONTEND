@@ -8,7 +8,7 @@ import { useRouter } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import { Divide, Upload, X } from "lucide-react"
 import { ButtonLoading } from "./components/loading"
-
+import useTitleStore from "@/app/store/reviewerNameStore"
 const filePreview = async (file: File) => {
     const text = await file.text();
     return text;
@@ -23,6 +23,7 @@ export default function QuizUploadPage()
     const [fileContent, setFileContent] = useState<reviewerInterface[] | null>(null)
 
     const setReviewer = useReviewerStore((state) => state.setReviewer)
+    const setTitle = useTitleStore((state) => state.setTitle)
 
     const router = useRouter()
 
@@ -48,6 +49,7 @@ export default function QuizUploadPage()
         {
             setIsLoading(true)
             setReviewer(fileContent)
+            setTitle(file[0].name)
             router.push("/pages/quizReview")
         }
     }

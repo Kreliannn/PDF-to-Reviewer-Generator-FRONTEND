@@ -7,18 +7,22 @@ import { Label } from "@/components/ui/label"
 import { Button } from "@/components/ui/button"
 import { Trash, X } from "lucide-react";
 import Navbar from "@/components/ui/quizNavbar"
+import useTitleStore from "@/app/store/reviewerNameStore"
 
 export default function ReviewQuiz()
 {
     const [search, setSearch] = useState("")
-
-    const reviewer = useReviewerStore((state) => state.reviewer)
     
+    const reviewer = useReviewerStore((state) => state.reviewer)
+    const title = useTitleStore((state) => state.title)
 
 
     return(
         <div className="w-full bg-stone-100 ">
             <Navbar />
+            <div className="text-center m-5">
+                <h1 className="text-2xl font-bold text-stone-600">{title.split(".")[0]} Reviewer</h1>
+            </div>
             {
                 reviewer?.map((item, index) => {
                     return (

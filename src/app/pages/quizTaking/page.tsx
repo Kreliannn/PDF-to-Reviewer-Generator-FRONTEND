@@ -15,10 +15,13 @@ import StartPage from "./components/startPage"
 import FilterQuestion from "./components/filterQuestion"
 import { analyticsInterface } from "@/app/interface/analytics"
 import StartPageWithChart from "./components/startPageWithChart"
+import useTitleStore from "@/app/store/reviewerNameStore"
+
 
 export default function TakeQuiz()
 {
     const reviewer = useReviewerStore((state) => state.reviewer)
+    const title = useTitleStore((state) => state.title)
     const [quizItem, setQuizItem] = useState<reviewerInterface[]>([])
     const [quiz, setQuiz] = useState<reviewerInterface[]>()
     const [question, setQuestion] = useState<string>("")
@@ -30,7 +33,10 @@ export default function TakeQuiz()
         wrong: 0,
         pass: 0
     })
+
+    console.log(title)
    
+    
 
     useEffect(() => {
         setQuiz(reviewer)
@@ -113,7 +119,7 @@ export default function TakeQuiz()
     {
         if(analytics.correct == 0 && analytics.wrong == 0 && analytics.pass == 0)
         {
-           return <StartPage setAnalyttics={setAnalytics} analytics={analytics} setIsStart={setIisStart} />
+           return <StartPage setIsStart={setIisStart} />
         }
         else
         {
