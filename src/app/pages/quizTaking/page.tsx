@@ -68,6 +68,15 @@ export default function TakeQuiz()
         }
     }
 
+    const pass = () => {
+        if(!quiz) return
+        const newQuiz = [...quiz]
+        const passItem = newQuiz.shift();
+        newQuiz.push(passItem as reviewerInterface)
+        setQuiz(newQuiz)
+        setQuestion(newQuiz[0].definition)
+    }
+
     if(isStart) return <StartPage setIsStart={setIisStart} />
 
     return(
@@ -84,7 +93,7 @@ export default function TakeQuiz()
                     </div>
                 </div>
 
-                <div className="w-full grid grid-cols-1 h-64 rounded    gap-1.5 p-2 ">
+                <div className="w-full grid grid-cols-1 h-64   rounded  oveflow-auto  gap-1.5 p-2 ">
                     <div className=" h-full bg-white rounded shadow-md p-4 oveflow-auto">
                         {
                             (isLoading) ? <SkeletonCard /> : <h1 className="text-stone-700 font-bold text-lg "> {question} </h1>
@@ -114,7 +123,7 @@ export default function TakeQuiz()
                 {
                     (quiz) ?
                     <div className="flex flex-wrap gap-2 p-2 mt-2">
-                        <Button size="lg" variant="black" className="" onClick={() => setIisStart(true)}>  Pass </Button>
+                        <Button size="lg" variant="black" className="" onClick={pass}>  Pass </Button>
                         <AllChoices  quiz={quiz} setInput={setInput} input={input} submit={submit} />
                         <FilterQuestion quiz={reviewer} setQuiz={setQuiz} setIisStart={setIisStart}/>
                         <Button  size="lg" variant="black" className="" onClick={() => setIisStart(true)}>  End Quiz </Button>
