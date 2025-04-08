@@ -31,14 +31,12 @@ If you want access to the **full source code**, please message me on TikTok.
 
 ### 📊 Track Performance Visually
 After completing a quiz, users receive a performance breakdown including:
-- 📈 A visual chart (e.g., pie or bar chart)
+- 📈 A visual chart (e.g., pie)
 - ✅ Number of correct answers
 - ❌ Number of wrong answers
 - ⏭️ Number of passed questions
 
----
 
-This helps users identify strengths and areas to improve based on their quiz results.
 
 
 
