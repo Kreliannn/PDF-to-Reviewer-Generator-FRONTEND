@@ -25,9 +25,9 @@ If you want access to the **full source code**, please message me on TikTok.
 ### 🎯 Take Personalized Quizzes
 - Once a reviewer is saved, users can start a quiz based on that content.
 - The quiz experience is adaptive and flexible:
-  - Option to filter questions (e.g., by topic or difficulty)
-  - Option to pass a question if unsure
-  - Use a text input for answers or toggle to see multiple choice options
+  - Option to filter questions (user can pick what the scope of his quiz)
+  - Option to pass a question if he/she dont know the answer
+  - Use a text input for answers or see multiple choice box options
 
 ### 📊 Track Performance Visually
 After completing a quiz, users receive a performance breakdown including:
