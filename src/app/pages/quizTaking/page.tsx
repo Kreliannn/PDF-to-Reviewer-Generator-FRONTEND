@@ -5,13 +5,14 @@ import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Label } from "@/components/ui/label"
 import { Button } from "@/components/ui/button"
-import { Trash, X } from "lucide-react";
+import { Filter, Trash, X } from "lucide-react";
 import { reviewerInterface } from "@/app/interface/reviewer"
 import Navbar from "@/components/ui/quizNavbar"
 import { Send } from 'lucide-react';
 import AllChoices from "./components/allChoices"
 import { SkeletonCard } from "./components/questionSkeleton"
 import StartPage from "./components/startPage"
+import FilterQuestion from "./components/filterQuestion"
 
 export default function TakeQuiz()
 {
@@ -111,7 +112,10 @@ export default function TakeQuiz()
                 </div>
 
                 <AllChoices quiz={reviewer} setInput={setInput} input={input} />
-
+              
+                <FilterQuestion quiz={reviewer}  />
+              
+                
 
             </div>
         </div>
