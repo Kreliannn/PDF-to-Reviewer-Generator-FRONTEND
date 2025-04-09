@@ -8,6 +8,8 @@ import { useRouter } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import { Divide, Upload, X } from "lucide-react"
 import { ButtonLoading } from "./components/loading"
+import HomeNavbar from "@/components/ui/homeNavbar"
+
 
 export default function UploadPage()
 {
@@ -60,8 +62,8 @@ export default function UploadPage()
 
     return(
         <div className="w-full">
-
-            <h1 className="text-center w-5/6 md:w-3/6 m-auto text-3xl font-bold mt-5"> PDF Reviewer</h1>
+            <HomeNavbar />
+            <h1 className="text-center w-5/6 md:w-3/6 m-auto text-3xl font-bold mt-10"> PDF Reviewer</h1>
             <p className="text-center w-5/6 md:w-3/6 m-auto text-md  text-stone-400 mt-2"> upload your pdf file to generate a personalized reviewer </p>
 
             <input 

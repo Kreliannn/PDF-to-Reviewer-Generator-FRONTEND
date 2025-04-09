@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button"
 import { FileText, BookOpen, ArrowRight } from "lucide-react"
 import Link from "next/link"
 import { useRouter } from "next/navigation"
-
+import HomeNavbar from "@/components/ui/homeNavbar"
 export default function Home() {
   const router = useRouter()
   //    <Link  className="bg-red-500 m-5 "href="/pages/generatorUpload"> generate reviewer </Link>
@@ -11,19 +11,9 @@ export default function Home() {
   return (
     <div className="flex flex-col min-h-screen bg-white">
       {/* Header */}
-      <header className="container mx-auto py-6 px-4">
-        <div className="flex items-center justify-between">
-          <h1 className="text-2xl font-bold">PDF Reviewer</h1>
-          <nav className="hidden md:flex space-x-6">
-            <Link href="#features" className="text-gray-600 hover:text-black transition-colors">
-              Features
-            </Link>
-            <Link href="#how-it-works" className="text-gray-600 hover:text-black transition-colors">
-              How It Works
-            </Link>
-          </nav>
-        </div>
-      </header>
+
+      <HomeNavbar />
+     
 
       {/* Hero Section */}
       <main className="flex-grow">

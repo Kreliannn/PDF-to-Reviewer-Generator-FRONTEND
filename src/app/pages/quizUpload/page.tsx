@@ -9,6 +9,7 @@ import { Button } from "@/components/ui/button"
 import { Divide, Upload, X } from "lucide-react"
 import { ButtonLoading } from "./components/loading"
 import useTitleStore from "@/app/store/reviewerNameStore"
+import HomenNavbar from "@/components/ui/homeNavbar"
 const filePreview = async (file: File) => {
     const text = await file.text();
     return text;
@@ -57,8 +58,8 @@ export default function QuizUploadPage()
     
     return(
         <div className="w-full">
-
-            <h1 className="text-center w-5/6 md:w-3/6 m-auto text-3xl font-bold mt-5"> Reviwer</h1>
+            <HomenNavbar />
+            <h1 className="text-center w-5/6 md:w-3/6 m-auto text-3xl font-bold mt-10"> Reviwer</h1>
             <p className="text-center w-5/6 md:w-3/6 m-auto text-md  text-stone-400 mt-2"> upload your reviewer file here </p>
             
             <input 

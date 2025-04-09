@@ -1,10 +1,10 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import { BookOpen, BrainCircuit, ClipboardCheck, LogOut  } from "lucide-react"
+import { Bot , BrainCircuit, ClipboardCheck, Home  } from "lucide-react"
 import { useRouter, usePathname  } from "next/navigation"
 
-export default function Navbar() {
+export default function HomeNavbar() {
   const [activeTab, setActiveTab] = useState("review")
   const pathname = usePathname()
   const router = useRouter()
@@ -18,13 +18,13 @@ export default function Navbar() {
     setActiveTab(tab)
     switch(tab)
     {
-        case "review":
-            router.push("/pages/quizReview")
+        case "Take Quiz":
+            router.push("/pages/quizUpload")
             break
-        case "take":
-            router.push("/pages/quizTaking")
+        case "Generate Reviewer":
+            router.push("/pages/generatorUpload")
             break
-        case "exit":
+        case "Home":
             router.push("/")
             break
         default:
@@ -43,21 +43,21 @@ export default function Navbar() {
         {/* Navigation Tabs */}
         <div className="flex space-x-1">
           <button
-           onClick={() => handleTabChange("review")}
+           onClick={() => handleTabChange("Generate Reviewer")}
             className={`px-3 sm:px-4 py-2 rounded-md transition-colors ${
-              activeTab === "/pages/quizReview"
+              activeTab === "/pages/generatorUpload"
                 ?  "bg-stone-200 text-black"
                 : "text-slate-200 hover:bg-stone-800 hover:text-white"
             }`}
           >
             <div className="flex items-center space-x-1">
-              <BookOpen className="h-5 w-5 sm:h-4 sm:w-4" />
-              <span className="hidden sm:inline">Review Quiz</span>
+              <Bot  className="h-5 w-5 sm:h-4 sm:w-4" />
+              <span className="hidden sm:inline">Generate Reviewer</span>
             </div>
           </button>
 
           <button
-           onClick={() => handleTabChange("take")}
+           onClick={() => handleTabChange("Take Quiz")}
             className={`px-3 sm:px-4 py-2 rounded-md transition-colors ${
               activeTab === "/pages/quizTaking"
                 ? "bg-stone-200 text-black"
@@ -72,16 +72,16 @@ export default function Navbar() {
 
 
           <button
-            onClick={() => handleTabChange("exit")}
+            onClick={() => handleTabChange("home")}
             className={`px-3 sm:px-4 py-2 rounded-md transition-colors ${
-              activeTab === "exit"
+              activeTab === "/"
                 ?  "bg-stone-200 text-black"
                 : "text-slate-200 hover:bg-stone-800 hover:text-white"
             }`}
           >
             <div className="flex items-center space-x-1">
-              <LogOut className="h-5 w-5 sm:h-4 sm:w-4" />
-              <span className="hidden sm:inline">Exit</span>
+              <Home className="h-5 w-5 sm:h-4 sm:w-4" />
+              <span className="hidden sm:inline">Home</span>
             </div>
           </button>
         </div>
@@ -89,4 +89,3 @@ export default function Navbar() {
     </nav>
   )
 }
-
