@@ -1,30 +1,43 @@
-# 📚 PDF Reviewer Generator
+# 📚 PDF to Reviewer And Quiz Web App
 
-A web app that allows users to upload **PDF files** and automatically generates a **question-and-answer reviewer** in **JSON format**. Users can **edit, add, or remove** items from the generated output before saving.
+A Responsive web app that use Ai to turn pdf files into Structured Q&A type Reviewer. user can customize the generated output before saving, and take personalized quizzes based on the saved Reviewer. The quiz allows filtering, skipping questions, and allow uset to choose between input and multiple-choice modes. After completing a quiz, users get a visual breakdown of their performance including correct, wrong, and skipped answers.
 
-## 🚧 <span style="color:red"> not complete </span>  
-this project is under developemnt
 
 ## ⚠️ <span style="color:red">Warning</span>  
 
-🚨 <span style="color:red">**This repository is private and contains only the frontend code.**</span>  
+🚨 <span style="color:red">**This Project is private and this repo contains only the frontend code.**</span>  
 If you want access to the **full source code**, please message me on TikTok.  
 
 🔗 [Contact me on TikTok](https://www.tiktok.com/@krelq)  
 
 
-
-
-
-
+---
 
 
 ## ✨ Features
 
-- 📂 **Upload Multiple PDFs** – Process multiple PDF files at once.
-- 🤖 **Auto-Generate Questions & Answers** – Converts content into a structured Q&A format.
-- ✏️ **Modify Output** – Users can edit, add, or remove generated questions before saving.
-- 💾 **Save & Export** – Store the final reviewer in JSON format.
+### 🧠 Generate Reviewers
+- **Auto-Generate Questions & Answers** – Converts content into a structured Q&A format using Gemeni api.
+- **Upload Multiple PDFs** – Process multiple PDF files at once and create on organized reviewer.
+- ✏**Modify Output** – Users can edit, add, or remove generated questions before saving.
+- **save Reviewer** – User can save many reviewer.
+
+### 🎯 Take Personalized Quizzes
+- Once a reviewer is saved, users can start a quiz based on that content.
+- The quiz experience is adaptive and flexible:
+  - Option to filter questions (user can pick what the scope of his quiz)
+  - Option to pass a question if he/she dont know the answer
+  - Use a text input for answers or see multiple choice box options
+
+### 📊 Track Performance Visually
+After completing a quiz, users receive a performance breakdown including:
+- 📈 A visual chart (e.g., pie)
+- ✅ Number of correct answers
+- ❌ Number of wrong answers
+- ⏭️ Number of passed questions
+
+
+
 
 
 
