@@ -16,7 +16,6 @@ const filePreview = async (file: File) => {
 };
 
 
-
 export default function QuizUploadPage()
 {
     const [isLoading, setIsLoading] = useState(false)

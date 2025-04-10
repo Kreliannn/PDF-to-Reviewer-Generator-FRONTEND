@@ -59,10 +59,10 @@ import {
                     <TableCell><Badge variant="outline" >{reviewer.subject}  </Badge > </TableCell>
                     <TableCell>{reviewer.createdat}</TableCell>
                     <TableCell className="text-right">
-                        <VisitButton id={reviewer.id}/>
+                        <VisitButton id={reviewer.id} title={reviewer.title}/>
                     </TableCell>
                     <TableCell className="text-right">
-                        <DeleteButton id={reviewer.id}/>
+                        <DeleteButton id={reviewer.id} reviewer={reviewers} setReviewers={setReviewers}/>
                     </TableCell>
                     </TableRow>
                 ))}
