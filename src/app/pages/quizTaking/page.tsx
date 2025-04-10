@@ -95,6 +95,11 @@ export default function TakeQuiz()
     }
 
     const endQuiz = () => {
+        setAnalytics({
+            correct: 0,
+            wrong: 0,
+            pass: 0
+        })
         restartQuiz()
     }
 

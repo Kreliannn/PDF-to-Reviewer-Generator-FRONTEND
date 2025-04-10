@@ -15,6 +15,23 @@ export const confirmAlert = (callback: () => void) => {
       });
 }
 
+export const TakeQuizAlert = (callback1: () => void, callback2 : () => void) => {
+  Swal.fire({
+      title: "Take Quiz?",
+      text: "do you want to visit this reviewer",
+      showCancelButton: true,
+      confirmButtonColor: "black",
+      cancelButtonColor: "black",
+      confirmButtonText: "visit Reviewer"
+    }).then((result) => {
+      if (result.isConfirmed) {
+        callback1()
+      }else{
+        callback2()
+      }
+    });
+}
+
 export const errorAlert = (message: string) => {
   Swal.fire({
     title: "error",

@@ -6,28 +6,42 @@ import { Textarea } from "@/components/ui/textarea"
 import { Label } from "@/components/ui/label"
 import { Button } from "@/components/ui/button"
 import { Trash, X } from "lucide-react";
-import {confirmAlert, errorAlert} from "../../utils/sweerAlert"
+import {confirmAlert, errorAlert, TakeQuizAlert} from "../../utils/sweerAlert"
 import axios from "axios"
 import { useMutation } from "@tanstack/react-query"
 import {saveInterface} from "../../interface/save"
+import { useRouter } from "next/navigation"
+import useTitleStore from "@/app/store/reviewerNameStore"
+
 
 export default function Edit()
 {
     const reviewer = useReviewerStore((state) => state.reviewer)
+    const setReviewer = useReviewerStore((state) => state.setReviewer)
+    const setTitle = useTitleStore((state) => state.setTitle)
+
     const [QnA, setQnA] = useState(reviewer)
 
+    const router = useRouter()
+
+
+    const [fileName, setFileName] = useState("")
+    const [subject, setSubject] = useState("")
+
+    
     const mutation = useMutation({
         mutationFn : (reviewer: saveInterface) => axios.post("http://localhost:1000/createReviewer", reviewer),
         onSuccess : (response) => {
-            console.log(response.data)
+            TakeQuizAlert(() =>{
+                setTitle(fileName + ".txt")
+                setReviewer(QnA)
+                router.push("/pages/quizReview")
+            }, () => router.push("/"))
         },
         onError : (err) => {
             console.log(err)
         }
     })
-
-    const [fileName, setFileName] = useState("")
-    const [subject, setSubject] = useState("")
 
     const changeTitle = (e : React.ChangeEvent<HTMLInputElement>, index : number) => {
         let currentQnA = [...QnA]
