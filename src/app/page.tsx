@@ -35,7 +35,7 @@ export default function Home() {
                 <BookOpen className="mr-2 h-5 w-5" />
                 Take Quiz
               </Button>
-              <Button className="bg-black hover:bg-gray-800 text-white px-8 py-6 rounded-md text-lg" onClick={()=> router.push("/pages/quizUpload")}>
+              <Button className="bg-black hover:bg-gray-800 text-white px-8 py-6 rounded-md text-lg" onClick={()=> router.push("/pages/reviewer")}>
                 <BookOpen className="mr-2 h-5 w-5" />
                 Reviewer
               </Button>
