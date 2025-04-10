@@ -72,7 +72,7 @@ export default function HomeNavbar() {
 
 
           <button
-            onClick={() => handleTabChange("home")}
+            onClick={() => handleTabChange("Home")}
             className={`px-3 sm:px-4 py-2 rounded-md transition-colors ${
               activeTab === "/"
                 ?  "bg-stone-200 text-black"

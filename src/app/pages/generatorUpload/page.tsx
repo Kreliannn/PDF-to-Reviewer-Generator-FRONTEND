@@ -24,7 +24,7 @@ export default function UploadPage()
     const fileInput = useRef<HTMLInputElement>(null)
 
     const mutation = useMutation({
-        mutationFn : (formData : FormData) => axios.post("http://localhost:1000", formData),
+        mutationFn : (formData : FormData) => axios.post("http://localhost:1000/mockUpData", formData),
         onSuccess : (response) => {
             const  QnA : reviewerInterface[]  = response.data
             setReviewer(QnA)

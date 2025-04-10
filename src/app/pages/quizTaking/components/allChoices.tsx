@@ -68,9 +68,13 @@ export default function AllChoices({ quiz, setInput, input, submit } :
 
           </div>
 
-          <div className="w-full m-auto  flex justify-center p-4 mt-2">
-             <Button variant="black" className="w-full m-auto" onClick={submit}> <Send /> Submit Answer </Button>
-          </div>
+
+
+          <DrawerFooter>
+            <DrawerClose asChild>
+            <Button variant="black" className="w-full m-auto" onClick={submit}> <Send /> Submit Answer </Button>
+            </DrawerClose>
+          </DrawerFooter>
 
         </div>     
       </DrawerContent>

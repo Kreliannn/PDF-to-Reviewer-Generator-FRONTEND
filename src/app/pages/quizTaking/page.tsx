@@ -16,7 +16,7 @@ import FilterQuestion from "./components/filterQuestion"
 import { analyticsInterface } from "@/app/interface/analytics"
 import StartPageWithChart from "./components/startPageWithChart"
 import useTitleStore from "@/app/store/reviewerNameStore"
-
+import {Alert} from "../../utils/sweerAlert"
 
 export default function TakeQuiz()
 {
@@ -74,11 +74,12 @@ export default function TakeQuiz()
             setQuestion(newQuiz[0].definition)      
             setInput("")
             setAnalytics(prev => ({...prev, correct: prev.correct + 1}))
+            Alert("success");
         }
         else
         {
             setAnalytics({...analytics, wrong: analytics.wrong + 1})
-            console.log("incorrect")
+            Alert("error");
         }
     }
 

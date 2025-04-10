@@ -59,7 +59,7 @@ export default function QuizUploadPage()
     return(
         <div className="w-full">
             <HomenNavbar />
-            <h1 className="text-center w-5/6 md:w-3/6 m-auto text-3xl font-bold mt-10"> Reviwer</h1>
+            <h1 className="text-center w-5/6 md:w-3/6 m-auto text-3xl font-bold mt-10"> Take Quiz </h1>
             <p className="text-center w-5/6 md:w-3/6 m-auto text-md  text-stone-400 mt-2"> upload your reviewer file here </p>
             
             <input 
@@ -81,7 +81,7 @@ export default function QuizUploadPage()
             <Button onClick={() => fileInput.current?.click()} variant="outline" className={(file) ? "hidden" : "border-2 border-dashed  w-5/6 md:w-3/6 m-auto h-32 flex flex-col gap-2"}>
                 <Upload className="h-24 w-24" />
                 <span className="text-lg font-bold">Click to upload file</span>
-                <span className="text-xs text-stone-500">pdf file only</span>
+                <span className="text-xs text-stone-500">Txt File Only</span>
             </Button>
 
             {
@@ -121,7 +121,7 @@ export default function QuizUploadPage()
             {(isLoading) ? <ButtonLoading />: <Button onClick={start} className="block w-5/6 md:w-3/6 m-auto" disabled={!file}> Start Review </Button> }
 
             <div className="w-5/6 md:w-3/6 m-auto">
-              <p className="w-5/6  m-auto text-center text-md  text-stone-400 mt-4 text-xs"> Your PDF file will be analyzed to create a reviewer with key concepts and question that you can personalized </p>
+              <p className="w-5/6  m-auto text-center text-md  text-stone-400 mt-4 text-xs"> take quiz and review your ai generated reviewer. please upload your reviewer file </p>
             </div>
             
             

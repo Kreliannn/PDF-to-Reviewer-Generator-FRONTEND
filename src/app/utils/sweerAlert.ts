@@ -15,3 +15,20 @@ export const confirmAlert = (callback: () => void) => {
       });
 }
 
+export const Alert = (type: string) => {
+    const Toast = Swal.mixin({
+      toast: true,
+      position: "top-end",
+      showConfirmButton: false,
+      timer: 2300,
+      timerProgressBar: true,
+      didOpen: (toast) => {
+        toast.onmouseenter = Swal.stopTimer;
+        toast.onmouseleave = Swal.resumeTimer;
+      }
+    });
+    Toast.fire({
+      icon: (type == "success")? "success": "error",
+      title: (type == "success")? "Correct Answer": "Wrrong Answer",
+    });
+}

@@ -4,10 +4,11 @@ import { FileText, BookOpen, ArrowRight } from "lucide-react"
 import Link from "next/link"
 import { useRouter } from "next/navigation"
 import HomeNavbar from "@/components/ui/homeNavbar"
+
+
 export default function Home() {
   const router = useRouter()
-  //    <Link  className="bg-red-500 m-5 "href="/pages/generatorUpload"> generate reviewer </Link>
-  // <Link  className="bg-blue-500 m-5 "href="/pages/quizUpload"> take reviewer </Link>
+  
   return (
     <div className="flex flex-col min-h-screen bg-white">
       {/* Header */}
@@ -17,7 +18,7 @@ export default function Home() {
 
       {/* Hero Section */}
       <main className="flex-grow">
-        <section className="container mx-auto py-16 px-4 md:py-24">
+        <section className="container mx-auto py-16 px-4 md:py-24 ">
           <div className="max-w-3xl mx-auto text-center">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-6">
               Transform PDFs into Interactive Study Materials
@@ -34,6 +35,10 @@ export default function Home() {
                 <BookOpen className="mr-2 h-5 w-5" />
                 Take Quiz
               </Button>
+              <Button className="bg-black hover:bg-gray-800 text-white px-8 py-6 rounded-md text-lg" onClick={()=> router.push("/pages/quizUpload")}>
+                <BookOpen className="mr-2 h-5 w-5" />
+                Reviewer
+              </Button>
             </div>
           </div>
         </section>
@@ -41,11 +46,11 @@ export default function Home() {
         {/* Features Section */}
         <section id="features" className="bg-gray-50 py-16 md:py-24">
           <div className="container mx-auto px-4">
-            <h2 className="text-3xl md:text-4xl font-bold text-center mb-16">Key Features</h2>
+        
 
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
               {/* Feature 1 */}
-              <div className="bg-white p-8 rounded-lg shadow-sm">
+              <div className="bg-white p-8 rounded-lg shadow-lg">
                 <div className="bg-black/5 w-12 h-12 flex items-center justify-center rounded-full mb-6">
                   <FileText className="h-6 w-6" />
                 </div>
@@ -67,7 +72,7 @@ export default function Home() {
               </div>
 
               {/* Feature 2 */}
-              <div className="bg-white p-8 rounded-lg shadow-sm">
+              <div className="bg-white p-8 rounded-lg shadow-lg">
                 <div className="bg-black/5 w-12 h-12 flex items-center justify-center rounded-full mb-6">
                   <BookOpen className="h-6 w-6" />
                 </div>
@@ -89,7 +94,7 @@ export default function Home() {
               </div>
 
               {/* Feature 3 */}
-              <div className="bg-white p-8 rounded-lg shadow-sm">
+              <div className="bg-white p-8 rounded-lg shadow-lg">
                 <div className="bg-black/5 w-12 h-12 flex items-center justify-center rounded-full mb-6">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
