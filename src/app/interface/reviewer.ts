@@ -3,3 +3,10 @@ export interface reviewerInterface {
     item : string,
     definition : string
 }
+
+export interface reviewerInterface2 {
+    id : string,
+    title : string,
+    subject : string,
+    createdat : string
+}

@@ -1,3 +1,4 @@
+"use client"
 import {
     Table,
     TableBody,
@@ -9,53 +10,32 @@ import {
     TableRow,
   } from "@/components/ui/table"
   import HomeNavbar from "@/components/ui/homeNavbar"
+  import VisitButton from "./components/visitButton"
+  import DeleteButton from "./components/deleteButton"
+  import axios from "axios"
+  import { reviewerInterface2 } from "@/app/interface/reviewer"
+  import { useEffect, useState } from "react"
+  import { useQuery } from "@tanstack/react-query"
+  import {Badge} from "@/components/ui/badge"
   
-  const invoices = [
-    {
-      invoice: "INV001",
-      paymentStatus: "Paid",
-      totalAmount: "$250.00",
-      paymentMethod: "Credit Card",
-    },
-    {
-      invoice: "INV002",
-      paymentStatus: "Pending",
-      totalAmount: "$150.00",
-      paymentMethod: "PayPal",
-    },
-    {
-      invoice: "INV003",
-      paymentStatus: "Unpaid",
-      totalAmount: "$350.00",
-      paymentMethod: "Bank Transfer",
-    },
-    {
-      invoice: "INV004",
-      paymentStatus: "Paid",
-      totalAmount: "$450.00",
-      paymentMethod: "Credit Card",
-    },
-    {
-      invoice: "INV005",
-      paymentStatus: "Paid",
-      totalAmount: "$550.00",
-      paymentMethod: "PayPal",
-    },
-    {
-      invoice: "INV006",
-      paymentStatus: "Pending",
-      totalAmount: "$200.00",
-      paymentMethod: "Bank Transfer",
-    },
-    {
-      invoice: "INV007",
-      paymentStatus: "Unpaid",
-      totalAmount: "$300.00",
-      paymentMethod: "Credit Card",
-    },
-  ]
-  
-  export default function ReviewerPage() {
+  export default  function ReviewerPage() {
+
+    const [ reviewers, setReviewers ] = useState<reviewerInterface2[]>([])
+    
+    const {data} = useQuery({
+        queryKey : ["reviewer"],
+        queryFn : () => axios.get("http://localhost:1000/getAllReviewers"),
+    })
+
+    useEffect(() => {
+        if(data)
+        {
+            console.log(data.data)
+            setReviewers(data.data)
+        }
+    }, [data])
+
+
     return (
     <div>
         <HomeNavbar />
@@ -73,14 +53,17 @@ import {
                 </TableRow>
                 </TableHeader>
                 <TableBody>
-                {invoices.map((invoice) => (
-                    <TableRow key={invoice.invoice}>
-                    <TableCell className="font-medium">{invoice.invoice}</TableCell>
-                    <TableCell>{invoice.paymentStatus}</TableCell>
-                    <TableCell>
-                        
+                {reviewers?.map((reviewer,i) => (
+                    <TableRow key={i}>
+                    <TableCell className="font-medium">{reviewer.title}</TableCell>
+                    <TableCell><Badge variant="outline" >{reviewer.subject}  </Badge > </TableCell>
+                    <TableCell>{reviewer.createdat}</TableCell>
+                    <TableCell className="text-right">
+                        <VisitButton id={reviewer.id}/>
                     </TableCell>
-                    <TableCell className="text-right">{invoice.totalAmount}</TableCell>
+                    <TableCell className="text-right">
+                        <DeleteButton id={reviewer.id}/>
+                    </TableCell>
                     </TableRow>
                 ))}
                 </TableBody>
