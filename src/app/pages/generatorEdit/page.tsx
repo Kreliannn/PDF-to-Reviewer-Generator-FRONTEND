@@ -6,16 +6,28 @@ import { Textarea } from "@/components/ui/textarea"
 import { Label } from "@/components/ui/label"
 import { Button } from "@/components/ui/button"
 import { Trash, X } from "lucide-react";
-import {confirmAlert} from "../../utils/sweerAlert"
+import {confirmAlert, errorAlert} from "../../utils/sweerAlert"
+import axios from "axios"
+import { useMutation } from "@tanstack/react-query"
+import {saveInterface} from "../../interface/save"
 
 export default function Edit()
 {
     const reviewer = useReviewerStore((state) => state.reviewer)
     const [QnA, setQnA] = useState(reviewer)
 
-    console.log(QnA)
+    const mutation = useMutation({
+        mutationFn : (reviewer: saveInterface) => axios.post("http://localhost:1000/createReviewer", reviewer),
+        onSuccess : (response) => {
+            console.log(response.data)
+        },
+        onError : (err) => {
+            console.log(err)
+        }
+    })
 
     const [fileName, setFileName] = useState("")
+    const [subject, setSubject] = useState("")
 
     const changeTitle = (e : React.ChangeEvent<HTMLInputElement>, index : number) => {
         let currentQnA = [...QnA]
@@ -29,13 +41,11 @@ export default function Edit()
         setQnA(currentQnA)
     }
 
-    const removeItem = (title : string) => {
-        
-    }
 
     const save = () => {
 
-        if(!fileName) return alert("add reviewer title");
+        if(!fileName) return errorAlert("please fill up title field");
+        if(!subject) return errorAlert("please fill up subject field");
 
         const text = JSON.stringify(QnA)
         const blob = new Blob([text], { type: "text/plain" });
@@ -47,6 +57,17 @@ export default function Edit()
         link.click();
         document.body.removeChild(link);
 
+        const currentDate = new Date();
+        const formattedDate = currentDate.toISOString().split('T')[0];
+
+        const obj = {
+            title : fileName,
+            subject : subject,
+            createdAt : formattedDate,
+            items : QnA
+        }
+
+        mutation.mutate(obj)
         
     }
 
@@ -57,8 +78,15 @@ export default function Edit()
                     <Input 
                         type="text" 
                         value={fileName}
-                        placeholder="set reviewer title"
+                        placeholder="Title"
                         onChange={(e) =>setFileName(e.target.value)}
+                        className="font-bold bg-white"
+                    /> 
+                    <Input 
+                        type="text" 
+                        value={subject}
+                        placeholder="Subject"
+                        onChange={(e) =>setSubject(e.target.value)}
                         className="font-bold bg-white"
                     /> 
                     <Button variant={"default"} onClick={save} >  save </Button>

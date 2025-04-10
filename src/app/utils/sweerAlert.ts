@@ -15,6 +15,15 @@ export const confirmAlert = (callback: () => void) => {
       });
 }
 
+export const errorAlert = (message: string) => {
+  Swal.fire({
+    title: "error",
+    text: message,
+    icon: "error",
+    confirmButtonColor: "black",
+  });
+}
+
 export const Alert = (type: string) => {
     const Toast = Swal.mixin({
       toast: true,
