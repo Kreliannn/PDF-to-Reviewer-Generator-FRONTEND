@@ -154,10 +154,10 @@ export default function TakeQuiz()
                     </div>
                 </div>
 
-                <div className="w-full grid grid-cols-1 h-64   rounded  oveflow-auto  gap-1.5 p-2 ">
-                    <div className=" h-full bg-white rounded shadow-md p-4 oveflow-auto">
+                <div className="w-full grid grid-cols-1 h-72   rounded    gap-1.5 p-2 ">
+                    <div className=" h-full bg-white rounded shadow-md p-4 overflow-auto">
                         {
-                            (isLoading) ? <SkeletonCard /> : <h1 className="text-stone-700 font-bold text-lg "> {question} </h1>
+                            (isLoading) ? <SkeletonCard /> : <h1 className=" text-stone-700 font-bold text-lg "> {question} </h1>
                         }
                     </div>  
                 </div>

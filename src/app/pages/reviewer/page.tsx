@@ -29,8 +29,8 @@ import {
     useEffect(() => {
         if(data)
         {
-            console.log(data.data)
-            setReviewers(data.data)
+            let rawData: reviewerInterface2[] = data.data
+            setReviewers(rawData.reverse())
         }
     }, [data])
 

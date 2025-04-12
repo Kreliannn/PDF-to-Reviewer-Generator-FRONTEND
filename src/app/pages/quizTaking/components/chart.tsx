@@ -42,9 +42,9 @@ const chartConfig = {
 export default function Component({analytics} : {analytics : analyticsInterface}) {
 
   const chartData = [
-    { answer: "correct", type: analytics.correct + 1, fill: "#F1E7E7" }, // lighter color
-    { answer: "wrong", type: analytics.wrong, fill: "#BDB395" },   // tan color
-    { answer: "pass", type: analytics.pass, fill: "#D4C9BE" },    // beige color
+    { answer: "correct", type: analytics.correct + 1, fill: "#A9A9A9" }, // lighter shade of black
+    { answer: "wrong", type: analytics.wrong, fill: "#555555" },   // darker shade of black
+    { answer: "pass", type: analytics.pass, fill: "#808080" },    // medium shade of black
   ]
 
   return (
