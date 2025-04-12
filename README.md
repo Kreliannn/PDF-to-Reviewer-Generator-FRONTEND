@@ -14,6 +14,7 @@ A Responsive web app that use Ai to turn pdf files into Structured Q&A type Revi
 ### 🎯 Take Personalized Quizzes
 - Once a reviewer is saved, users can start a quiz based on that content.
 - The quiz experience is adaptive and flexible:
+  - quiz is shuffle in every take
   - Option to filter questions (user can pick what the scope of his quiz)
   - Option to pass a question if he/she dont know the answer
   - Use a text input for answers or see multiple choice box options
