@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import { BookOpen, BrainCircuit, ClipboardCheck, LogOut  } from "lucide-react"
+import { BookOpen, ClipboardCheck, LogOut  } from "lucide-react"
 import { useRouter, usePathname  } from "next/navigation"
 
 export default function Navbar() {

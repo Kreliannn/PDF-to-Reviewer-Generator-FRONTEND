@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import { Bot , BrainCircuit, ClipboardCheck, Home  , BookOpen} from "lucide-react"
+import { Bot , ClipboardCheck, Home  , BookOpen} from "lucide-react"
 import { useRouter, usePathname  } from "next/navigation"
 
 export default function HomeNavbar() {
@@ -11,7 +11,7 @@ export default function HomeNavbar() {
 
     useEffect(() => {
         setActiveTab(pathname)
-    }, [])
+    }, [pathname])
   
 
   const handleTabChange = (tab: string) => {
