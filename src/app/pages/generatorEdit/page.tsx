@@ -24,6 +24,8 @@ export default function Edit()
 
     const router = useRouter()
 
+    
+    console.log(reviewer)
 
     const [fileName, setFileName] = useState("")
     const [subject, setSubject] = useState("")
@@ -128,7 +130,7 @@ export default function Edit()
                             
                            
                             <div className="grid w-full gap-1.5 mt-2">
-                                <Textarea className="h-auto bg-white h-60 md:h-32" placeholder="set definition" value={question.definition} onChange={(e) => changeDefinition(e, index)} />
+                                <Textarea className="h-auto bg-white h-60 md:h-32" placeholder="set defenition" value={question.definition} onChange={(e) => changeDefinition(e, index)} />
                                 <p className="text-xs text-muted-foreground ">
                                     you can modify item before saving
                                 </p>

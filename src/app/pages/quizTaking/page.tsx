@@ -18,6 +18,17 @@ import StartPageWithChart from "./components/startPageWithChart"
 import useTitleStore from "@/app/store/reviewerNameStore"
 import {Alert} from "../../utils/sweerAlert"
 
+
+
+function shuffle(array: reviewerInterface[]) {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array;
+}
+
+
 export default function TakeQuiz()
 {
     const reviewer = useReviewerStore((state) => state.reviewer)
@@ -37,10 +48,9 @@ export default function TakeQuiz()
     
 
     useEffect(() => {
-        setQuiz(reviewer)
         if(reviewer.length != 0)
         {
-            setQuestion(reviewer[0].definition)
+            setQuiz(reviewer)
             setIsLoading(false)
         }
     },[reviewer])
@@ -48,12 +58,14 @@ export default function TakeQuiz()
     useEffect(() => {
         if(quiz && quiz.length != 0)
         {
-            setQuizItem(quiz)
-            setQuestion(quiz[0].definition)
+            const shuffledQuiz = shuffle([...quiz]);
+            setQuizItem(shuffledQuiz)
+            setQuestion(shuffledQuiz[0].definition)
         }
 
     }, [quiz])
 
+ 
     const checkIfExists = ( item: string) => {
         if(quizItem) return quizItem.some((obj) => obj.item.toUpperCase() === item.toUpperCase()); 
     }

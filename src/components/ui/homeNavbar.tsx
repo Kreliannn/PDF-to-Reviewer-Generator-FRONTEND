@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import { Bot , BrainCircuit, ClipboardCheck, Home  } from "lucide-react"
+import { Bot , BrainCircuit, ClipboardCheck, Home  , BookOpen} from "lucide-react"
 import { useRouter, usePathname  } from "next/navigation"
 
 export default function HomeNavbar() {
@@ -23,6 +23,9 @@ export default function HomeNavbar() {
             break
         case "Generate Reviewer":
             router.push("/pages/generatorUpload")
+            break
+        case "Reviewer":
+            router.push("/pages/reviewer")
             break
         case "Home":
             router.push("/")
@@ -53,6 +56,20 @@ export default function HomeNavbar() {
             <div className="flex items-center space-x-1">
               <Bot  className="h-5 w-5 sm:h-4 sm:w-4" />
               <span className="hidden sm:inline">Generate Reviewer</span>
+            </div>
+          </button>
+
+          <button
+           onClick={() => handleTabChange("Reviewer")}
+            className={`px-3 sm:px-4 py-2 rounded-md transition-colors ${
+              activeTab === "/pages/reviewer"
+                ?  "bg-stone-200 text-black"
+                : "text-slate-200 hover:bg-stone-800 hover:text-white"
+            }`}
+          >
+            <div className="flex items-center space-x-1">
+              <BookOpen  className="h-5 w-5 sm:h-4 sm:w-4" />
+              <span className="hidden sm:inline">All Reviewer</span>
             </div>
           </button>
 

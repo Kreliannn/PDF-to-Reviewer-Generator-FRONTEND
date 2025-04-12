@@ -1,12 +1,13 @@
 "use client"
 import { Button } from "@/components/ui/button"
-import { FileText, BookOpen, ArrowRight } from "lucide-react"
+import { FileText, BookOpen, ArrowRight , ClipboardCheck} from "lucide-react"
 import Link from "next/link"
 import { useRouter } from "next/navigation"
 import HomeNavbar from "@/components/ui/homeNavbar"
 
 
 export default function Home() {
+
   const router = useRouter()
   
   return (
@@ -26,19 +27,22 @@ export default function Home() {
             <p className="text-xl text-gray-600 mb-10">
               AI-powered tool that converts your PDF files into structured Q&A reviewers and personalized quizzes
             </p>
-            <div className="flex flex-col sm:flex-row justify-center gap-4" onClick={()=> router.push("/pages/generatorUpload")}>
-              <Button className="bg-black hover:bg-gray-800 text-white px-8 py-6 rounded-md text-lg">
+            <div className="flex flex-col sm:flex-row justify-center gap-4" >
+              <Button className="bg-black hover:bg-gray-800 text-white px-8 py-6 rounded-md text-lg" onClick={()=> router.push("/pages/generatorUpload")}>
                 <FileText className="mr-2 h-5 w-5" />
                 Generate Reviewer
               </Button>
-              <Button className="bg-black hover:bg-gray-800 text-white px-8 py-6 rounded-md text-lg" onClick={()=> router.push("/pages/quizUpload")}>
-                <BookOpen className="mr-2 h-5 w-5" />
-                Take Quiz
-              </Button>
+
               <Button className="bg-black hover:bg-gray-800 text-white px-8 py-6 rounded-md text-lg" onClick={()=> router.push("/pages/reviewer")}>
                 <BookOpen className="mr-2 h-5 w-5" />
-                Reviewer
+                All Reviewers
               </Button>
+
+              <Button className="bg-black hover:bg-gray-800 text-white px-8 py-6 rounded-md text-lg" onClick={()=> router.push("/pages/quizUpload")}>
+                <ClipboardCheck className="mr-2 h-5 w-5" />
+                Take Quiz
+              </Button>
+  
             </div>
           </div>
         </section>

@@ -16,6 +16,7 @@ export default function ReviewQuiz()
     const reviewer = useReviewerStore((state) => state.reviewer)
     const title = useTitleStore((state) => state.title)
 
+    console.log(reviewer)
 
     return(
         <div className="w-full bg-stone-100 ">
