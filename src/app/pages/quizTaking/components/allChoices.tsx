@@ -1,12 +1,6 @@
-
 import { useState, useEffect } from "react"
-import { Input } from "@/components/ui/input"
-import { Textarea } from "@/components/ui/textarea"
-import { Label } from "@/components/ui/label"
 import { Button } from "@/components/ui/button"
-import { Trash, X } from "lucide-react";
 import { reviewerInterface } from "@/app/interface/reviewer"
-import Navbar from "@/components/ui/quizNavbar"
 import { Send } from 'lucide-react';
 import { Badge } from "@/components/ui/badge"
 

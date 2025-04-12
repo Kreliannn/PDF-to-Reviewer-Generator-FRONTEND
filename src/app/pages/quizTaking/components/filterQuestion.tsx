@@ -1,17 +1,12 @@
 "use client"
-import { useState, useEffect } from "react"
-import { Input } from "@/components/ui/input"
-import { Textarea } from "@/components/ui/textarea"
-import { Label } from "@/components/ui/label"
+import { useState, } from "react"
 import { Button } from "@/components/ui/button"
 import { reviewerInterface } from "@/app/interface/reviewer"
 import { Checkbox } from "@/components/ui/checkbox"
 import {
   Drawer,
-  DrawerClose,
   DrawerContent,
   DrawerDescription,
-  DrawerFooter,
   DrawerHeader,
   DrawerTitle,
   DrawerTrigger,

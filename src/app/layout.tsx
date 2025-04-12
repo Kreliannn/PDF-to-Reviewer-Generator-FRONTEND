@@ -1,9 +1,8 @@
 "use client"
-import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { QueryClientProvider, QueryClient } from "@tanstack/react-query";
-import { use } from "react";
+
 
 const client = new QueryClient()
 

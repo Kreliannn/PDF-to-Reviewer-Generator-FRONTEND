@@ -1,7 +1,7 @@
 "use client"
 
 import { TrendingUp } from "lucide-react"
-import { LabelList, Pie, PieChart } from "recharts"
+import { Pie, PieChart } from "recharts"
 
 import {
   Card,
@@ -69,20 +69,7 @@ export default function Component({analytics} : {analytics : analyticsInterface}
               label={({ name, value, index }) => chartData[index].answer}
               labelLine={true}
               className="font-bold text-stone-600"
-            >
-              <LabelList
-                dataKey="type"
-                className="fill-white font-bold"
-                stroke="none"
-                fontSize={14}
-                fill="white"
-                formatter={(value: number) => {
-                  const total = chartData.reduce((acc, cur) => acc + cur.type, 0)
-                  const percent = ((value / total) * 100).toFixed(1)
-                  return `${percent}%`
-                }}
-              />
-            </Pie>
+            />
           </PieChart>
         </ChartContainer>
       </CardContent>

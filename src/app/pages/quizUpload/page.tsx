@@ -1,15 +1,14 @@
 "use client"
-import {useState, useRef, act, useEffect} from "react"
-import axios from "axios"
-import { useMutation } from "@tanstack/react-query"
+import {useState, useRef, useEffect} from "react"
 import useReviewerStore from "@/app/store/reviewerStore"
 import { reviewerInterface } from "@/app/interface/reviewer"
 import { useRouter } from "next/navigation"
 import { Button } from "@/components/ui/button"
-import { Divide, Upload, X } from "lucide-react"
+import {  Upload, X } from "lucide-react"
 import { ButtonLoading } from "./components/loading"
 import useTitleStore from "@/app/store/reviewerNameStore"
 import HomenNavbar from "@/components/ui/homeNavbar"
+
 const filePreview = async (file: File) => {
     const text = await file.text();
     return text;
