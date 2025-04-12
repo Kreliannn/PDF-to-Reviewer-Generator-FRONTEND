@@ -23,7 +23,7 @@ import {
     
     const {data} = useQuery({
         queryKey : ["reviewer"],
-        queryFn : () => axios.get("http://localhost:1000/getAllReviewers"),
+        queryFn : () => axios.get("https://pdf-to-reviewer-backend.onrender.com/getAllReviewers"),
     })
 
     useEffect(() => {

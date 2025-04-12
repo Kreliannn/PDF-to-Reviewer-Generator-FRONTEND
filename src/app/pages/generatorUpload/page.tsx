@@ -24,7 +24,7 @@ export default function UploadPage()
     const fileInput = useRef<HTMLInputElement>(null)
 
     const mutation = useMutation({
-        mutationFn : (formData : FormData) => axios.post("http://localhost:1000/uploads", formData),
+        mutationFn : (formData : FormData) => axios.post("https://pdf-to-reviewer-backend.onrender.com/uploads", formData),
         onSuccess : (response) => {
             const  QnA : reviewerInterface[]  = response.data
             setReviewer(QnA)

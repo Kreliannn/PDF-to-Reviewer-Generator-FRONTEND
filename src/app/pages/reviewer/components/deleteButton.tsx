@@ -11,7 +11,7 @@ export default function DeleteButton({ id, setReviewers, reviewer } : { reviewer
 
 
     const mutation = useMutation({
-        mutationFn : (id: string) => axios.delete(`http://localhost:1000/deleteReviewer/${id}`),
+        mutationFn : (id: string) => axios.delete(`https://pdf-to-reviewer-backend.onrender.com/deleteReviewer/${id}`),
         onSuccess : (response) => {
             setReviewers(reviewer.filter((reviewer) => reviewer.id !== id))
         },

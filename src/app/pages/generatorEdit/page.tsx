@@ -32,7 +32,7 @@ export default function Edit()
 
     
     const mutation = useMutation({
-        mutationFn : (reviewer: saveInterface) => axios.post("http://localhost:1000/createReviewer", reviewer),
+        mutationFn : (reviewer: saveInterface) => axios.post("https://pdf-to-reviewer-backend.onrender.com/createReviewer", reviewer),
         onSuccess : (response) => {
             TakeQuizAlert(() =>{
                 setTitle(fileName + ".txt")

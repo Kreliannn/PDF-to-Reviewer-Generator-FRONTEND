@@ -14,7 +14,7 @@ export default function VisitButton({ id, title } : { id : string, title : strin
     const router = useRouter()
 
     const mutation = useMutation({
-        mutationFn : (id: string) => axios.get(`http://localhost:1000/getAllReviewers/${id}`),
+        mutationFn : (id: string) => axios.get(`https://pdf-to-reviewer-backend.onrender.com/getAllReviewers/${id}`),
         onSuccess : (response) => {
             setReviewer(response.data)
             setTitle(title)
