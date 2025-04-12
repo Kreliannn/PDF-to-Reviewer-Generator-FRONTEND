@@ -9,7 +9,7 @@ import { Button } from "@/components/ui/button"
 import { Divide, Upload, X } from "lucide-react"
 import { ButtonLoading } from "./components/loading"
 import HomeNavbar from "@/components/ui/homeNavbar"
-
+import { errorAlert } from "@/app/utils/sweerAlert"
 
 export default function UploadPage()
 {
@@ -74,7 +74,21 @@ export default function UploadPage()
               className="hidden" 
               required 
               multiple={true}
-              onChange={(e) => setFile((e.target.files) ? e.target.files : null)}
+              onChange={(e) => {
+                if(e.target.files)
+                {
+                    const length = e.target.files?.length
+                    for(let i = 0; i < length!; i++)
+                    {
+                        if(e.target.files[i].type != "application/pdf")
+                        {
+                            errorAlert("Invalid File Type")
+                            return
+                        }
+                    }
+                    setFile((e.target.files) ? e.target.files : null)
+                }
+            }}
              />
 
              <br />

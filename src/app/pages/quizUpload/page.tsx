@@ -8,6 +8,7 @@ import {  Upload, X } from "lucide-react"
 import { ButtonLoading } from "./components/loading"
 import useTitleStore from "@/app/store/reviewerNameStore"
 import HomenNavbar from "@/components/ui/homeNavbar"
+import { errorAlert } from "@/app/utils/sweerAlert"
 
 const filePreview = async (file: File) => {
     const text = await file.text();
@@ -36,7 +37,9 @@ export default function QuizUploadPage()
                     const arr: reviewerInterface[] = JSON.parse(text)
                     setFileContent(arr)
                 } catch (err) {
-                    console.log(err)
+                    errorAlert("Invalid File Format")
+                    setFileContent(null)
+                    setFile(null)
                 }
             });
         }
@@ -68,7 +71,19 @@ export default function QuizUploadPage()
               className="hidden" 
               required 
               multiple={true}
-              onChange={(e) => setFile(e.target.files || null)}
+              onChange={(e) => {
+                    if(e.target.files)
+                    {
+                    
+                        if(e.target.files[0].type != "text/plain")
+                        {
+                            errorAlert("Invalid File Type")
+                            return
+                        }
+                            
+                        setFile(e.target.files)
+                    }
+              }}
 
              />
 

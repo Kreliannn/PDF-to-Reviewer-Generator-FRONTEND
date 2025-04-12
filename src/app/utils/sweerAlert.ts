@@ -44,7 +44,7 @@ export const errorAlert = (message: string) => {
 export const Alert = (type: string) => {
     const Toast = Swal.mixin({
       toast: true,
-      position: "top-end",
+      position: "bottom",
       showConfirmButton: false,
       timer: 2300,
       timerProgressBar: true,
@@ -55,6 +55,6 @@ export const Alert = (type: string) => {
     });
     Toast.fire({
       icon: (type == "success")? "success": "error",
-      title: (type == "success")? "Correct Answer": "Wrrong Answer",
+      title: (type == "success")? "Correct Answer": "Wrong Answer",
     });
 }
