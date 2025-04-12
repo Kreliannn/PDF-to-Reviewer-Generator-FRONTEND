@@ -28,24 +28,18 @@ After completing a quiz, users receive a performance breakdown including:
 
 
 ## 📸 Preview  
-![Image](https://github.com/user-attachments/assets/17f29f4c-2a8b-4b0e-ad0b-a9bad4c2b5dc)
-
-![Image](https://github.com/user-attachments/assets/fa751de0-50b0-4799-b8bf-4d40e5bd10ab)
-
-![Image](https://github.com/user-attachments/assets/ee03af24-8e9e-4d49-b1d0-ad951cbbbc19)
-
-![Image](https://github.com/user-attachments/assets/c466f3b0-da82-44d8-8374-d67a517f24fa)
-
-![Image](https://github.com/user-attachments/assets/bbd9c7fd-a0b9-48c5-a393-8c0134e35ee6)
-
-![Image](https://github.com/user-attachments/assets/8e691431-7ea1-4e95-9264-e17779d2ad4c)
-
-![Image](https://github.com/user-attachments/assets/ed6986ca-737d-4c7a-b1d9-0c7c23d62870)
-
-![Image](https://github.com/user-attachments/assets/b6881969-3764-4685-8752-9568d95e6467)
-
-![Image](https://github.com/user-attachments/assets/9f61d832-19de-455d-849c-1b518cd291d2)
-
+![Image](https://github.com/user-attachments/assets/885f8061-9619-45e6-8c97-2bb199284fba)
+![Image](https://github.com/user-attachments/assets/83f1158b-0118-4828-8947-fb4b1ad29100)
+![Image](https://github.com/user-attachments/assets/60431eca-8bf7-4708-93f7-ce8e92bc7a85)
+![Image](https://github.com/user-attachments/assets/e3590cc0-3dcc-472f-985a-8e3e91072b5e)
+![Image](https://github.com/user-attachments/assets/b2abe8b9-0ceb-4adb-bca9-b0c7f805073a)
+![Image](https://github.com/user-attachments/assets/8776204a-13c5-4e27-81a9-209eabeedd65)
+![Image](https://github.com/user-attachments/assets/93dfa28b-b871-4564-a26f-041292c112b2)
+![Image](https://github.com/user-attachments/assets/d1467c67-5ba4-44bb-ad80-b372f600af26)
+![Image](https://github.com/user-attachments/assets/1fb7d4c8-6ce2-4ceb-a6ea-992cd46b57f9)
+![Image](https://github.com/user-attachments/assets/8ff0314a-1a5a-4f18-a52b-e77bcdac15c4)
+![Image](https://github.com/user-attachments/assets/dc341ab9-7bab-467d-91d3-834c1fe23cc0)
+![Image](https://github.com/user-attachments/assets/1662b3bb-e5fa-4440-b590-e5b9f890ae88)
 ![Image](https://github.com/user-attachments/assets/f3142c91-7862-4146-aa8c-53171ead5071)
 
 ![Image](https://github.com/user-attachments/assets/f24a2bbf-e818-455c-bca6-af0802543a5a)
